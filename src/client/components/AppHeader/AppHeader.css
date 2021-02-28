@@ -1,0 +1,14 @@
+.AppHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a00d5b;
+}
+
+.AppHeader > div {
+  padding: 10px;
+}
+
+.AppHeader .logoContainer {
+  flex: 1;
+}

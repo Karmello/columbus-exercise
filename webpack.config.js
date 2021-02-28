@@ -20,18 +20,27 @@ module.exports = {
         loader: 'ts-loader',
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.css$/,
         include: /[/\\]node_modules[/\\]semantic-ui-css[/\\]/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.(ttf|svg|png|eot|woff|woff2)$/,
+        test: /\.(ttf|svg|eot|woff|woff2)$/,
         use: {
           loader: 'file-loader',
           options: {
             esModule: false,
           },
         },
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        loader: 'file-loader',
       },
     ],
   },

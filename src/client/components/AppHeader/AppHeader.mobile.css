@@ -1,0 +1,9 @@
+@media (min-width: 601px) {
+  .AppHeader-mobile {
+    display: none;
+  }
+}
+
+.AppHeader-mobile .logoContainer img {
+  margin: 0 auto;
+}

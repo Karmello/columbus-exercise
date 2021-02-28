@@ -1,0 +1,40 @@
+.ProductPage {
+  display: flex;
+}
+
+.ProductPage > div {
+  flex: 3;
+  padding: 10px;
+}
+
+.ProductPage .linksMenuContainer {
+  flex: 1;
+}
+
+.ProductPage .buySection {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.ProductPage .buySection > div {
+  flex: 1;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.ProductPage .buySection > div:last-child {
+  flex: 2;
+}
+
+@media (max-width: 600px) {
+  .ProductPage .linksMenuContainer {
+    display: none;
+  }
+}
+
+@media (min-width: 601px) {
+  .ProductPage .buySection > div:last-child > * {
+    width: 100px;
+  }
+}

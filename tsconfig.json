@@ -10,7 +10,6 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "Node",
     "paths": {
-      "dictionary": ["client/dictionary"],
       "types/*": ["types/*"],
       "mocks/*": ["mocks/*"],
       "components/*": ["client/components/*"],

@@ -1,0 +1,25 @@
+@media (max-width: 600px) {
+  .AppHeader-desktop {
+    display: none;
+  }
+}
+
+.AppHeader-desktop {
+  flex-flow: row wrap;
+}
+
+.AppHeader-desktop .logoContainer {
+  min-width: 300px;
+}
+
+.AppHeader-desktop .optionsContainer {
+  display: flex;
+}
+
+.AppHeader-desktop .optionsContainer > div {
+  padding: 10px;
+}
+
+.AppHeader-desktop .menu a {
+  padding: 10px;
+}
