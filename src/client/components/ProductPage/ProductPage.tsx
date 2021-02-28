@@ -8,16 +8,27 @@ import {
   Button,
   Dropdown,
   DropdownProps,
+  ButtonProps,
 } from 'semantic-ui-react'
 
+import { formatPrice } from 'helpers/index'
+import { ProductImage } from 'components/index'
 import dict from './dictionary'
 import './ProductPage.css'
 
-const ProductPage = () => {
+type Props = {
+  totalPrice: number
+  setTotalPrice: (newPrice: number) => void
+}
+
+const ProductPage = ({ totalPrice, setTotalPrice }: Props) => {
   const [activeDropdownIndex, setActiveDropdownIndex] = useState<number>(0)
 
   const onDropdownChange = (e: SyntheticEvent, data: DropdownProps) =>
     setActiveDropdownIndex(Number(data.value))
+
+  const onBuyClick = (e: SyntheticEvent, props: ButtonProps) =>
+    setTotalPrice(totalPrice + Number(dict.mainSection.price.new))
 
   return (
     <Segment attached>
@@ -36,7 +47,12 @@ const ProductPage = () => {
           <Segment>
             <div className="buySection">
               <div>
-                <Header as="h3" content="565,00 kr" />
+                <Header as="h2">
+                  {formatPrice(dict.mainSection.price.new)}
+                  <Header.Subheader>
+                    {formatPrice(dict.mainSection.price.old)}
+                  </Header.Subheader>
+                </Header>
               </div>
               <div>
                 <Dropdown
@@ -53,18 +69,41 @@ const ProductPage = () => {
                 />
               </div>
               <div>
-                <Button content={dict.buttons.buy} fluid floated="right" />
+                <Button
+                  content={dict.buttons.buy}
+                  fluid
+                  floated="right"
+                  onClick={onBuyClick}
+                />
               </div>
             </div>
           </Segment>
-          <Segment basic>
-            {dict.mainSection.text.map((item, i) => (
+          <div className="productImageContainer">
+            <div>
+              <ProductImage />
+            </div>
+            <div>
+              <Segment basic>
+                {dict.mainSection.text.map((item, i) => (
+                  <div key={i}>
+                    {item}
+                    <Divider hidden />
+                  </div>
+                ))}
+              </Segment>
+            </div>
+          </div>
+          <Divider hidden />
+          <div className="textBlocksContainer">
+            {dict.mainSection.blocks.map((item, i) => (
               <div key={i}>
-                {item}
-                <Divider hidden />
+                <Segment>
+                  <Header>{item.header}</Header>
+                  <div>{item.text}</div>
+                </Segment>
               </div>
             ))}
-          </Segment>
+          </div>
         </div>
       </div>
     </Segment>

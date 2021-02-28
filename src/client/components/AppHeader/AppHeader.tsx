@@ -2,6 +2,7 @@ import React from 'react'
 import { hot } from 'react-hot-loader'
 import { Image, Icon, Button, Segment, Form } from 'semantic-ui-react'
 
+import { formatPrice } from 'helpers/index'
 import dict from './dictionary'
 import logo from 'assets/logo.png'
 
@@ -9,7 +10,11 @@ import './AppHeader.css'
 import './AppHeader.mobile.css'
 import './AppHeader.desktop.css'
 
-const AppHeader = () => (
+type Props = {
+  totalPrice: number
+}
+
+const AppHeader = ({ totalPrice }: Props) => (
   <>
     <Segment attached="top">
       <div className="AppHeader AppHeader-mobile">
@@ -35,7 +40,15 @@ const AppHeader = () => (
             <Button content={dict.buttons.search} />
           </div>
           <div>
-            <Icon name="shopping cart" size="big" />
+            <Button
+              icon="shopping cart"
+              label={{
+                basic: true,
+                pointing: 'left',
+                content: formatPrice(totalPrice),
+              }}
+            />
+            {/* <Icon name="shopping cart" size="big" /> */}
           </div>
           <div>
             <Button content={dict.buttons.checkout} />

@@ -27,6 +27,26 @@
   flex: 2;
 }
 
+.ProductPage .textBlocksContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-flow: row wrap;
+}
+
+.ProductPage .textBlocksContainer > div {
+  margin: 5px;
+  flex-basis: 100%;
+}
+
+.ProductPage .productImageContainer > div:first-child {
+  flex: 2;
+}
+
+.ProductPage .productImageContainer > div:last-child {
+  flex: 3;
+}
+
 @media (max-width: 600px) {
   .ProductPage .linksMenuContainer {
     display: none;
@@ -36,5 +56,17 @@
 @media (min-width: 601px) {
   .ProductPage .buySection > div:last-child > * {
     width: 100px;
+  }
+}
+
+@media (min-width: 800px) {
+  .ProductPage .productImageContainer {
+    display: flex;
+  }
+}
+
+@media (min-width: 1000px) {
+  .ProductPage .textBlocksContainer > div {
+    flex-basis: 30%;
   }
 }
